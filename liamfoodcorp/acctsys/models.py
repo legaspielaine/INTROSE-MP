@@ -70,7 +70,7 @@ class VoucherInfo(models.Model):
     debit = models.DecimalField(max_digits=20, decimal_places=2)
     credit = models.DecimalField(max_digits=20, decimal_places=2)
     class Meta:
-        verbose_name_plural = "VoucherInfo"
+        verbose_name_plural = "Voucher Info"
     
 
 class JV(models.Model):
