@@ -9,7 +9,9 @@ class Branch(models.Model):
     def __str__(self):
         return self.branchName
 
-
+    class Meta:
+        verbose_name_plural = "Branch"
+        
 class ChartOfAccounts(models.Model):
     accGrpentry = models.CharField(max_length=50)
     accCode = models.IntegerField(default=0)
@@ -25,6 +27,8 @@ class ChartOfAccounts(models.Model):
     
     def __str__(self):
         return "ChartAcct - " + str(self.id)
+    class Meta:
+        verbose_name_plural = "COA"
 
 
 class ProductList(models.Model):
@@ -33,6 +37,8 @@ class ProductList(models.Model):
     
     def __str__(self):
         return self.prodCategory
+    class Meta:
+        verbose_name_plural = "ProductList"
 
 
 class Crew(models.Model):
@@ -40,7 +46,8 @@ class Crew(models.Model):
     
     def __str__(self):
         return self.crewName
-    
+    class Meta:
+        verbose_name_plural = "Crew"
 
 class Products(models.Model):
     grpCode = models.ForeignKey(ProductList, null=True)
@@ -52,6 +59,8 @@ class Products(models.Model):
     
     def __str__(self):
         return str(self.prodCode)
+    class Meta:
+        verbose_name_plural = "Product"
     
 
 class VoucherInfo(models.Model):
@@ -60,6 +69,8 @@ class VoucherInfo(models.Model):
     particulars = models.CharField(max_length=50)
     debit = models.DecimalField(max_digits=20, decimal_places=2)
     credit = models.DecimalField(max_digits=20, decimal_places=2)
+    class Meta:
+        verbose_name_plural = "Vinfo"
     
 
 class JV(models.Model):
@@ -71,6 +82,8 @@ class JV(models.Model):
     
     def __str__(self):
         return "JV - " + str(self.id)
+    class Meta:
+        verbose_name_plural = "JV"
 
 
 class CDV(models.Model):
@@ -85,6 +98,8 @@ class CDV(models.Model):
     
     def __str__(self):
         return "CDV - " + str(self.id)
+    class Meta:
+        verbose_name_plural = "CDV"
 
 
 class CRV(models.Model):
@@ -97,6 +112,8 @@ class CRV(models.Model):
     
     def __str__(self):
         return "CRV - " + str(self.id)
+    class Meta:
+        verbose_name_plural = "CRV"
 
 
 class Sales(models.Model):
@@ -123,4 +140,6 @@ class Sales(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "Sales" + str(self.id)  
+        return "Sales" + str(self.id)
+    class Meta:
+        verbose_name_plural = "Sales"
