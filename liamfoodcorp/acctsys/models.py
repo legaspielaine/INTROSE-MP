@@ -1,15 +1,15 @@
 from django.db import models
 
 
-# Create your models here.
 class Branch(models.Model):
     branchName = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     defBank = models.CharField(max_length=50)
     
-    def _str_(self):
-        return str(branchName)
-    
+    def __str__(self):
+        return str(self.branchName)
+
+
 class ChartOfAccounts(models.Model):
     accGrpentry = models.CharField(max_length=50)
     accCode = models.IntegerField(default=0)
@@ -23,24 +23,25 @@ class ChartOfAccounts(models.Model):
     )
     accEntry = models.CharField(max_length=10, choices=TYPES_ENTRY)
     
-    def _str_(self):
+    def __str__(self):
         return "ChartAcct - " + str(self.id)
-    
+
+
 class ProductList(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     prodCategory = models.CharField(max_length=50) #productList like dimsum, mami, etc.
     
-    def _str_(self):
-        return str(prodCategory)
-    
+    def __str__(self):
+        return str(self.prodCategory)
+
+
 class Crew(models.Model):
     crewName = models.CharField(max_length=50)
     
-    def _str_(self):
-        return str(crewName)
+    def __str__(self):
+        return str(self.crewName)
     
 
-    
 class Products(models.Model):
     grpCode = models.ForeignKey(ProductList, null=True)
     prodCode = models.IntegerField(default=0)
@@ -49,8 +50,8 @@ class Products(models.Model):
     purchaseAmt = models.DecimalField(max_digits=20, decimal_places=2)
     actualStock = models.DecimalField(max_digits=20, decimal_places=2)
     
-    def _str_(self):
-        return str(prodCode)
+    def __str__(self):
+        return str(self.prodCode)
     
 
 class VoucherInfo(models.Model):
@@ -60,8 +61,7 @@ class VoucherInfo(models.Model):
     debit = models.DecimalField(max_digits=20, decimal_places=2)
     credit = models.DecimalField(max_digits=20, decimal_places=2)
     
-    
-    
+
 class JV(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     pubDateJV = models.DateTimeField(auto_now_add=True)
@@ -69,9 +69,10 @@ class JV(models.Model):
     totalAmt =  models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user 
     vInfo = models.ManyToManyField(VoucherInfo)
     
-    def _str_(self):
+    def __str__(self):
         return "JV - " + str(self.id)
-    
+
+
 class CDV(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     payee = models.CharField(max_length=30)
@@ -82,9 +83,10 @@ class CDV(models.Model):
     totalAmt =  models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user 
     vInfo = models.ManyToManyField(VoucherInfo)
     
-    def _str_(self):
+    def __str__(self):
         return "CDV - " + str(self.id)
-    
+
+
 class CRV(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     receivedFr = models.CharField(max_length=20)
@@ -93,8 +95,9 @@ class CRV(models.Model):
     totalAmt =  models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user 
     vInfo = models.ManyToManyField(VoucherInfo)
     
-    def _str_(self):
+    def __str__(self):
         return "CRV - " + str(self.id)
+
 
 class Sales(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
@@ -121,5 +124,3 @@ class Sales(models.Model):
 
     def __str__(self):
         return "Sales" + str(self.id)  
-
-		
