@@ -7,7 +7,7 @@ class Branch(models.Model):
     defBank = models.CharField(max_length=50)
     
     def __str__(self):
-        return str(self.branchName)
+        return self.branchName
 
 
 class ChartOfAccounts(models.Model):
@@ -32,14 +32,14 @@ class ProductList(models.Model):
     prodCategory = models.CharField(max_length=50) #productList like dimsum, mami, etc.
     
     def __str__(self):
-        return str(self.prodCategory)
+        return self.prodCategory
 
 
 class Crew(models.Model):
     crewName = models.CharField(max_length=50)
     
     def __str__(self):
-        return str(self.crewName)
+        return self.crewName
     
 
 class Products(models.Model):
