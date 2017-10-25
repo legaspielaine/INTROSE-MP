@@ -11,7 +11,8 @@ class Branch(models.Model):
 
     class Meta:
         verbose_name_plural = "Branch"
-        
+
+
 class ChartOfAccounts(models.Model):
     accGrpentry = models.CharField(max_length=50)
     accCode = models.IntegerField(default=0)
@@ -48,6 +49,7 @@ class Crew(models.Model):
         return self.crewName
     class Meta:
         verbose_name_plural = "Crew"
+
 
 class Products(models.Model):
     grpCode = models.ForeignKey(ProductList, null=True)
