@@ -28,7 +28,7 @@ class ChartOfAccounts(models.Model):
     def __str__(self):
         return "ChartAcct - " + str(self.id)
     class Meta:
-        verbose_name_plural = "COA"
+        verbose_name_plural = "Chart Of Accounts"
 
 
 class ProductList(models.Model):
@@ -38,7 +38,7 @@ class ProductList(models.Model):
     def __str__(self):
         return self.prodCategory
     class Meta:
-        verbose_name_plural = "ProductList"
+        verbose_name_plural = "Product List"
 
 
 class Crew(models.Model):
@@ -70,7 +70,7 @@ class VoucherInfo(models.Model):
     debit = models.DecimalField(max_digits=20, decimal_places=2)
     credit = models.DecimalField(max_digits=20, decimal_places=2)
     class Meta:
-        verbose_name_plural = "Vinfo"
+        verbose_name_plural = "VoucherInfo"
     
 
 class JV(models.Model):
@@ -83,7 +83,7 @@ class JV(models.Model):
     def __str__(self):
         return "JV - " + str(self.id)
     class Meta:
-        verbose_name_plural = "JV"
+        verbose_name_plural = "Journal Voucher"
 
 
 class CDV(models.Model):
@@ -99,7 +99,7 @@ class CDV(models.Model):
     def __str__(self):
         return "CDV - " + str(self.id)
     class Meta:
-        verbose_name_plural = "CDV"
+        verbose_name_plural = "Cash Disbursement Voucher"
 
 
 class CRV(models.Model):
@@ -113,7 +113,7 @@ class CRV(models.Model):
     def __str__(self):
         return "CRV - " + str(self.id)
     class Meta:
-        verbose_name_plural = "CRV"
+        verbose_name_plural = "Cash Receipt Voucher"
 
 
 class Sales(models.Model):
