@@ -53,7 +53,7 @@ class Crew(models.Model):
         verbose_name_plural = "Crews"
 
 
-class Products(models.Model):
+class Product(models.Model):
     grpCode = models.CharField(max_length=50)
     prodCode = models.IntegerField(default=0)
     prodDescrip = models.CharField(max_length=50)

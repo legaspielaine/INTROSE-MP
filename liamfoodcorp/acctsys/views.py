@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import ChartOfAccounts, ProductList, Crew, Products, VoucherInfo, JV, CDV, CRV, Branch, Sales
+from .models import ChartOfAccounts, ProductList, Crew, Product, VoucherInfo, JV, CDV, CRV, Branch, Sales
 from acctsys.forms import BranchForm, COAForm
 
 
