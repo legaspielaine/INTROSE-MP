@@ -54,6 +54,7 @@ class Crew(models.Model):
 
 
 class Product(models.Model):
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     grpCode = models.CharField(max_length=50)
     prodCode = models.IntegerField(default=0)
     prodDescrip = models.CharField(max_length=50)
@@ -71,7 +72,6 @@ class Product(models.Model):
 class VoucherInfo(models.Model):
     acctCode = models.IntegerField(default=0)
     acctDescrip = models.CharField(max_length=50)
-    particulars = models.CharField(max_length=50)
     debit = models.DecimalField(max_digits=20, decimal_places=2)
     credit = models.DecimalField(max_digits=20, decimal_places=2)
 
