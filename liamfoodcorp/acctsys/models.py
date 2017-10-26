@@ -52,7 +52,7 @@ class Crew(models.Model):
 
 
 class Products(models.Model):
-    grpCode = models.ForeignKey(ProductList, null=True)
+    grpCode = models.CharField(max_length=50)
     prodCode = models.IntegerField(default=0)
     prodDescrip = models.CharField(max_length=50)
     sellingPrice = models.DecimalField(max_digits=20, decimal_places=2)
