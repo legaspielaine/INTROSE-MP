@@ -10,7 +10,7 @@ class Branch(models.Model):
         return self.branchName
 
     class Meta:
-        verbose_name_plural = "Branch"
+        verbose_name_plural = "Branches"
 
 
 class ChartOfAccounts(models.Model):
@@ -28,6 +28,7 @@ class ChartOfAccounts(models.Model):
     
     def __str__(self):
         return "ChartAcct - " + str(self.id)
+
     class Meta:
         verbose_name_plural = "Chart Of Accounts"
 
@@ -38,8 +39,9 @@ class ProductList(models.Model):
     
     def __str__(self):
         return self.prodCategory
+
     class Meta:
-        verbose_name_plural = "Product List"
+        verbose_name_plural = "Product Lists"
 
 
 class Crew(models.Model):
@@ -47,8 +49,9 @@ class Crew(models.Model):
     
     def __str__(self):
         return self.crewName
+
     class Meta:
-        verbose_name_plural = "Crew"
+        verbose_name_plural = "Crews"
 
 
 class Products(models.Model):
@@ -61,8 +64,9 @@ class Products(models.Model):
     
     def __str__(self):
         return str(self.prodCode)
+
     class Meta:
-        verbose_name_plural = "Product"
+        verbose_name_plural = "Products"
     
 
 class VoucherInfo(models.Model):
@@ -71,6 +75,10 @@ class VoucherInfo(models.Model):
     particulars = models.CharField(max_length=50)
     debit = models.DecimalField(max_digits=20, decimal_places=2)
     credit = models.DecimalField(max_digits=20, decimal_places=2)
+
+    def __str__(self):
+        return "VInfo - " + str(self.id)
+
     class Meta:
         verbose_name_plural = "Voucher Info"
     
@@ -79,13 +87,14 @@ class JV(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     pubDateJV = models.DateTimeField(auto_now_add=True)
     remarks = models.CharField(max_length=150)
-    totalAmt =  models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user 
+    totalAmt = models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user
     vInfo = models.ManyToManyField(VoucherInfo)
     
     def __str__(self):
         return "JV - " + str(self.id)
+
     class Meta:
-        verbose_name_plural = "Journal Voucher"
+        verbose_name_plural = "Journal Vouchers"
 
 
 class CDV(models.Model):
@@ -95,13 +104,14 @@ class CDV(models.Model):
     checkNo = models.CharField(max_length=30)
     pubDateCDV = models.DateTimeField(auto_now_add=True)
     remarks = models.CharField(max_length=150)
-    totalAmt =  models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user 
+    totalAmt = models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user
     vInfo = models.ManyToManyField(VoucherInfo)
     
     def __str__(self):
         return "CDV - " + str(self.id)
+
     class Meta:
-        verbose_name_plural = "Cash Disbursement Voucher"
+        verbose_name_plural = "Cash Disbursement Vouchers"
 
 
 class CRV(models.Model):
@@ -109,13 +119,14 @@ class CRV(models.Model):
     receivedFr = models.CharField(max_length=20)
     pubDateCRV = models.DateTimeField(auto_now_add=True)
     remarks = models.CharField(max_length=150)
-    totalAmt =  models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user 
+    totalAmt = models.DecimalField(max_digits=10, decimal_places=2) #computed fixed amount not editable by user
     vInfo = models.ManyToManyField(VoucherInfo)
     
     def __str__(self):
         return "CRV - " + str(self.id)
+
     class Meta:
-        verbose_name_plural = "Cash Receipt Voucher"
+        verbose_name_plural = "Cash Receipt Vouchers"
 
 
 class Sales(models.Model):
@@ -143,5 +154,6 @@ class Sales(models.Model):
 
     def __str__(self):
         return "Sales" + str(self.id)
+
     class Meta:
         verbose_name_plural = "Sales"
