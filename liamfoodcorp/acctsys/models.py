@@ -34,7 +34,6 @@ class ChartOfAccounts(models.Model):
 
 
 class ProductList(models.Model):
-    branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     prodCategory = models.CharField(max_length=50) #productList like dimsum, mami, etc.
     
     def __str__(self):
