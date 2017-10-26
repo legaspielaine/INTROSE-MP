@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import ChartOfAccounts, ProductList, Crew, Product, VoucherInfo, JV, CDV, CRV, Branch, Sales
-from acctsys.forms import BranchForm, COAForm
+from acctsys.forms import BranchForm, COAForm, ProductForm
 
 
 def index(request):
@@ -35,3 +35,16 @@ def addCOA(request):
         }
         return render(request, '/acctsys/addcoa.html', context)
 
+
+def addProduct(request):
+    if request.method == 'POST':
+        productform = ProductForm(request.POST)
+        if productform.is_valid():
+            productform.save()
+            return redirect('/')
+    else:
+        productform = ProductForm()
+        context = {
+            'productform': productform
+        }
+        return render(request, '/acctsys/addproduct.html', context)
