@@ -49,14 +49,14 @@ def addCOA(request):
 
 
 def addProduct(request):
-    if request.method == 'POST':
-        productform = ProductForm(request.POST)
-        if productform.is_valid():
-            productform.save()
-            return redirect('/')
-    else:
-        productform = ProductForm()
-        context = {
-            'productform': productform
-        }
-        return render(request, 'acctsys/addproduct.html', context)
+    # if request.method == 'POST':
+    #     productform = ProductForm(request.POST)
+    #     if productform.is_valid():
+    #         productform.save()
+    #         return redirect('/')
+    # else:
+    productform = ProductForm()
+    context = {
+        'productform': productform
+    }
+    return render(request, 'acctsys/addproduct.html', context)
