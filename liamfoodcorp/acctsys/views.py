@@ -5,7 +5,19 @@ from acctsys.forms import BranchForm, COAForm, ProductForm
 
 
 def index(request):
-    return HttpResponse("<a href='/addBranch/'>click this</a>")
+    return render(request, 'acctsys/index.html')
+
+
+def branch(request):
+    return render(request, 'acctsys/branch.html')
+
+
+def coa(request):
+    return render(request, 'acctsys/coa.html')
+
+
+def inventory(request):
+    return render(request, 'acctsys/inventory.html')
 
 
 def addBranch(request):
@@ -19,7 +31,7 @@ def addBranch(request):
         context = {
             'branchform': branchform
         }
-        return render(request, '/acctsys/addbranch.html', context)
+        return render(request, 'acctsys/addbranch.html', context)
 
 
 def addCOA(request):
@@ -33,7 +45,7 @@ def addCOA(request):
         context = {
             'coaform': coaform
         }
-        return render(request, '/acctsys/addcoa.html', context)
+        return render(request, 'acctsys/addcoa.html', context)
 
 
 def addProduct(request):
@@ -47,4 +59,4 @@ def addProduct(request):
         context = {
             'productform': productform
         }
-        return render(request, '/acctsys/addproduct.html', context)
+        return render(request, 'acctsys/addproduct.html', context)
