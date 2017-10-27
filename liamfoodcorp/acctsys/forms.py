@@ -54,11 +54,14 @@ class COAForm(forms.ModelForm):
         }
         
         
-class ProductForm:
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
+        exclude = [
+            'branch',
+        ]
         fields = [
-            'grpcode',
+            'grpCode',
             'prodCode',
             'prodDescrip', 
             'sellingPrice', 
@@ -66,16 +69,16 @@ class ProductForm:
             'actualStock', 
         ]
         widgets = {
-            'grpcode': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter grpcode'}),
+            'grpCode': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter grpcode'}),
             'prodCode': forms.NumberInput(attrs={'required': True, 'placeholder': 'Enter prodcode'}),
-            'prodDescrip': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter grpcode'}),
-            'sellingPrice':forms.NumberInput(attrs={'step': 0.01, 'value': '0.00', 'placeholder': '0.00'}),
-            'purchaseAmt':forms.NumberInput(attrs={'step': 0.01, 'value': '0.00', 'placeholder': '0.00'}),
-            'actualStock':forms.NumberInput(attrs={'step': 0.01, 'value': '0.00', 'placeholder': '0.00'}),
+            'prodDescrip': forms.TextInput(attrs={'required': True, 'placeholder': 'Enter prodDescrip'}),
+            'sellingPrice': forms.NumberInput(attrs={'step': 0.01, 'value': '0.00', 'placeholder': '0.00'}),
+            'purchaseAmt': forms.NumberInput(attrs={'step': 0.01, 'value': '0.00', 'placeholder': '0.00'}),
+            'actualStock': forms.NumberInput(attrs={'step': 0.01, 'value': '0.00', 'placeholder': '0.00'}),
             
         }
         label = {
-            'grpcode': 'Group Code : ',
+            'grpCode': 'Group Code : ',
             'prodCode': 'Product Code : ',
             'prodDescrip': 'Product Description : ', 
             'sellingPrice': 'Selling Price : ',
